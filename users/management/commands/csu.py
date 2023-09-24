@@ -9,12 +9,12 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         user = User.objects.create(
-            email=os.getenv('admin_mail'),
+            email=os.getenv('SU_MAIL'),
             first_name='Fox',
             last_name='Kot',
             country=Country.objects.first(),
             is_staff=True,
             is_superuser=True,
         )
-        user.set_password(os.getenv('su_pass'))
+        user.set_password(os.getenv('SU_PASS'))
         user.save()
