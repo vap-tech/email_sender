@@ -1,0 +1,45 @@
+{% extends 'catalog/base.html' %}
+
+{% load media %}
+
+{% block content %}
+
+    <header>
+        <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+            <h1 class="display-4 fw-normal text-body-emphasis">Страна</h1>
+            <p class="fs-5 text-body-secondary">Просмотр Страны.</p>
+        </div>
+    </header>
+
+    <main class="row">
+        <div class="row text-center">
+
+            <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-header py-3">
+                    <h4 class="my-0 fw-normal">{{ object.country|title }}</h4>
+                </div>
+                <div class="card-body">
+                    <p>
+                        {{ object.description }}
+                    </p>
+                    {% if object.preview %}
+                        <img src="{{ object.preview|media_path }}" alt="Изображение - {{ object.title|lower }}">
+                    {% endif %}
+                    <div class="row">
+                        <div class="col-6">
+                            <a href="{% url 'users:country-update' object.pk %}" class="w-75 mb-2 btn btn-primary">Редактировать</a>
+                        </div>
+                        <div class="col-6">
+                            <a href="{% url 'users:country-delete' object.pk %}" class="w-75 mb-2 btn btn-danger">Удалить</a>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="card-footer">Просмотры: {{ object.country }} </div>
+            </div>
+
+        </div>
+    </main>
+{% endblock %}
