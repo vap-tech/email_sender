@@ -35,6 +35,17 @@
                 Страны
             </a>
         </li>
+
+        <li>
+            <a href="{% url 'mailing:log-all' %}" class="nav-link
+                {% if request.path == '/log/all/' %}active{% else %}text-white{% endif %}">
+                <svg class="bi pe-none me-2" width="16" height="16">
+                    <use href="#collection"></use>
+                </svg>
+                Лог рассылок
+            </a>
+        </li>
+
         <li>
             <a href="{% url 'mailing:messages' %}" class="nav-link
                 {% if request.path == '/messages/' %}active{% else %}text-white{% endif %}">

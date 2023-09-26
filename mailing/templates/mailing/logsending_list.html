@@ -1,0 +1,65 @@
+{% extends 'mailing/base.html' %}
+
+{% load media %}
+
+{% block content %}
+
+    <header>
+        <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+            <h1 class="display-4 fw-normal text-body-emphasis">Лог рассылок</h1>
+            <p class="fs-5 text-body-secondary">
+                {% if object_list %}
+                    Просмотр логов.
+                {% else %}
+                    Упс... Список логов пуст.
+                {% endif %}
+            </p>
+        </div>
+    </header>
+
+    <main class="row">
+        <div class="row text-center">
+
+            {% if object_list %}
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">№ записи</th>
+                        <th scope="col">Рассылка</th>
+                        <th scope="col">Последняя попытка</th>
+                        <th scope="col">Статус</th>
+                        <th scope="col">Ответ сервера</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for object in object_list %}
+
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ object.mailing }}</td>
+                            <td>{{ object.date_time }}</td>
+                            <td>{{ object.status_post }}</td>
+                            <td>{{ object.server_request }}</td>
+                        </tr>
+
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+
+            {% else %}
+
+                <p>Данных пока нет, чтобы они появились, пожалуйста, добавьте новую рассылку.</p>
+                <div class="row text-center">
+                    <div class="col">
+                        <a href="{% url 'mailing:mailing-create' %}" class="btn btn-outline-primary">Добавить</a>
+                    </div>
+                </div>
+            {% endif %}
+
+
+        </div>
+    </main>
+{% endblock %}
