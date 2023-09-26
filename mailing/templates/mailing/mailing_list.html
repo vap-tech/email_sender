@@ -1,0 +1,63 @@
+{% extends 'mailing/base.html' %}
+
+{% load media %}
+
+{% block content %}
+
+    <header>
+        <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+            <h1 class="display-4 fw-normal text-body-emphasis">Рассылки</h1>
+            <p class="fs-5 text-body-secondary">
+                {% if object_list %}
+                    Обзор рассылок.
+                {% else %}
+                    Упс... Список рассылок пуст.
+                {% endif %}
+            </p>
+        </div>
+    </header>
+
+    <main class="row">
+        <div class="row text-center">
+
+            {% if object_list %}
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">№ записи</th>
+                        <th scope="col">Название</th>
+                        <th scope="col">Тема</th>
+                        <th scope="col">Статус</th>
+                        <th scope="col">Ссылка</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for object in object_list %}
+
+                        <tr>
+                            <th scope="row">{{ object.pk }}</th>
+                            <td>{{ object.name }}</td>
+                            <td>{{ object.subject }}</td>
+                            <td>{{ object.status }}</td>
+                            <td><a href="{% url 'mailing:mailing-detail' object.pk %}">Подробнее</a></td>
+                        </tr>
+
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+
+            {% else %}
+
+                <p>Данных пока нет, чтобы они появились, пожалуйста, добавьте новую рассылку.</p>
+
+            {% endif %}
+        <div class="row text-center">
+            <div class="col"><a href="{% url 'mailing:mailing-create' %}" class="btn btn-outline-primary">Добавить</a></div>
+        </div>
+
+        </div>
+    </main>
+{% endblock %}
