@@ -1,0 +1,55 @@
+{% extends 'mailing/base.html' %}
+
+{% load media %}
+
+{% block content %}
+
+    <header>
+        <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+            <h1 class="display-4 fw-normal text-body-emphasis">Добро пожаловать!</h1>
+        </div>
+    </header>
+
+    <main class="row">
+        <div class="row text-center">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Всего рассылок</th>
+                    <th scope="col">Активных рассылок</th>
+                    <th scope="col">Всего клиентов</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">{{ mailing_all }} шт.</th>
+                        <td>{{ mailing_is_activ }}</td>
+                        <td>{{ clients }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <main class="row">
+        <div class="row text-center">
+            {% for object in rand_blog %}
+                <div class="col-4">
+                    <div class="card mb-4 rounded-3 shadow-sm">
+                        <div class="card-header py-3">
+                            <h4 class="my-0 fw-normal">{{ object.title|title }}</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                {{ object.content }}
+                            </p>
+                        </div>
+                        <div class="card-footer">Просмотры: {{ object.views_count }}</div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </main>
+
+{% endblock %}

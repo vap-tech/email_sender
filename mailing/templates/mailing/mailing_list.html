@@ -29,6 +29,7 @@
                         <th scope="col">Название</th>
                         <th scope="col">Тема</th>
                         <th scope="col">Статус</th>
+                        <th scope="col">Периодичность</th>
                         <th scope="col">Ссылка</th>
                     </tr>
                     </thead>
@@ -40,7 +41,8 @@
                             <th scope="row">{{ forloop.counter }}</th>
                             <td>{{ object.name }}</td>
                             <td>{{ object.subject }}</td>
-                            <td>{{ object.status }}</td>
+                            <td>{{ object.get_status_display }}</td>
+                            <td>{{ object.get_intervals_display }}</td>
                             <td><a href="{% url 'mailing:mailing-detail' object.pk %}">Подробнее</a></td>
                         </tr>
 

@@ -20,7 +20,7 @@ class Country(models.Model):
 class User(AbstractUser):
 
     username = None
-    email = models.EmailField(unique=True, verbose_name='почта')
+    email = models.EmailField(unique=True, verbose_name='email')
 
     patronymic = models.CharField(max_length=35, verbose_name='отчество', **NULLABLE)
     phone = models.CharField(max_length=35, verbose_name='телефон', **NULLABLE)
