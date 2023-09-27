@@ -18,19 +18,33 @@
 ### Пример файла .env
 
 CACHE_ENABLE = True
+
 LOCATION = redis://127.0.0.1:6379
 
 DEBUG = True
 
+
+
 EMAIL_HOST = mail.nic.ru
+
 EMAIL_PORT = 25
+
 EMAIL_HOST_USER = admin@v-petrenko.ru
+
 EMAIL_HOST_PASSWORD = M342R_crb
 
+
+
 DB_HOST = localhost
+
 DB_USER = postgres
+
 DB_PASS = 123
+
 DB_NAME = project4
 
+
+
 SU_MAIL = admin@example.ru
+
 SU_PASS = admin12345
