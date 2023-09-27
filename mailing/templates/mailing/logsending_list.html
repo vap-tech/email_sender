@@ -27,6 +27,7 @@
                     <tr>
                         <th scope="col">№ записи</th>
                         <th scope="col">Рассылка</th>
+                        <th scope="col">Клиент</th>
                         <th scope="col">Последняя попытка</th>
                         <th scope="col">Статус</th>
                         <th scope="col">Ответ сервера</th>
@@ -39,6 +40,7 @@
                         <tr>
                             <th scope="row">{{ forloop.counter }}</th>
                             <td>{{ object.mailing }}</td>
+                            <td>{{ object.client }}</td>
                             <td>{{ object.date_time }}</td>
                             <td>{{ object.status_post }}</td>
                             <td>{{ object.server_request }}</td>

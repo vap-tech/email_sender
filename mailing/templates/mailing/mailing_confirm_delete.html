@@ -11,18 +11,23 @@
         </div>
     </header>
 
-    <div class="col-12">
-        <div class="row">
-            <div class="col-6">
-                <div class="card">
-                    <div class="card-body">
-                        <form method="post">
-                            {% csrf_token %}
-                                <p>Вы действительно хотите удалить рассылку? </p>
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <p>Вы действительно хотите удалить рассылку? </p>
+                        <div class="row">
+                            <div class="d-grid gap-2 col-6 mx-auto">
                                 <button type="submit" class="btn btn-danger">Подтвердить</button>
-                                <a href="{% url 'mailing:mailing-list' %}" class="btn btn-warning">Отмена</a>
-                        </form>
-                    </div>
+                            </div>
+                            <div class="d-grid gap-2 col-6 mx-auto">
+                                <a href="{% url 'mailing:mailing-all' %}" class="btn btn-warning">Отмена</a>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
