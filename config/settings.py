@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django_crontab',
+
     'mailing',
     'users',
 ]
@@ -113,11 +115,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru-RU'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -152,3 +154,7 @@ CACHES = {
         "LOCATION": os.getenv('LOCATION'),
     }
 }
+
+CRONJOBS = [
+    ('*/5 * * * *', 'mailing.services.send_all')
+]

@@ -19,16 +19,19 @@
                 </div>
                 <div class="card-body">
 
-                    <h4>Тема:</h4>
+                    <h5>Тема:</h5>
                     <p>{{ object.subject }}</p>
 
-                    <h4>Сообщение:</h4>
+                    <h5>Сообщение:</h5>
                     <p>{{ object.message }}</p>
 
-                    <h4>Статус:</h4>
-                    <p>{{ object.status }}</p>
+                    <h5>Статус:</h5>
+                    <p>{{ object.get_status_display }}</p>
 
-                    <h4>Создатель</h4>
+                    <h5>Периодичность:</h5>
+                    <p>{{ object.get_intervals_display }}</p>
+
+                    <h5>Создатель:</h5>
                     <p> {{ object.creator|default:'не указан' }}</p>
 
 

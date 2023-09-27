@@ -18,6 +18,10 @@
 
     <form method="post" enctype="multipart/form-data" class="row">
 
+        {% if not formset %}
+            <div class="col-3"></div>
+        {% endif %}
+
         <div class="col-6">
             <div class="card">
                 <div class="card-body">

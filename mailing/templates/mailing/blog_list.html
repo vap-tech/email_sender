@@ -6,14 +6,8 @@
 
     <header>
         <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-            <h1 class="display-4 fw-normal text-body-emphasis">Рассылки</h1>
-            <p class="fs-5 text-body-secondary">
-                {% if object_list %}
-                    Обзор рассылок.
-                {% else %}
-                    Упс... Список рассылок пуст.
-                {% endif %}
-            </p>
+            <h1 class="display-4 fw-normal text-body-emphasis">Блог</h1>
+            <p class="fs-5 text-body-secondary">Ниже представлены сообщения блога.</p>
         </div>
     </header>
 
@@ -27,9 +21,7 @@
                     <tr>
                         <th scope="col">№ записи</th>
                         <th scope="col">Название</th>
-                        <th scope="col">Тема</th>
-                        <th scope="col">Статус</th>
-                        <th scope="col">Периодичность</th>
+                        <th scope="col">Содержимое</th>
                         <th scope="col">Ссылка</th>
                     </tr>
                     </thead>
@@ -39,11 +31,11 @@
 
                         <tr>
                             <th scope="row">{{ forloop.counter }}</th>
-                            <td>{{ object.name }}</td>
-                            <td>{{ object.subject }}</td>
-                            <td>{{ object.get_status_display }}</td>
-                            <td>{{ object.get_intervals_display }}</td>
-                            <td><a href="{% url 'mailing:mailing-detail' object.pk %}">Подробнее</a></td>
+                            <td>{{ object.title|title }}</td>
+                            <td>{{ object.content|truncatechars:20 }}</td>
+                            <td>
+                                <a href="{% url 'mailing:blog-detail' object.slug %}">Подробнее</a>
+                            </td>
                         </tr>
 
                     {% endfor %}
@@ -56,10 +48,12 @@
                 <p>Данных пока нет, чтобы они появились, пожалуйста, добавьте новую рассылку.</p>
 
             {% endif %}
-        <div class="row text-center">
-            <div class="col"><a href="{% url 'mailing:mailing-create' %}" class="btn btn-outline-primary">Добавить</a></div>
-        </div>
+
+            <div class="col-12 mb-5">
+                <a class="btn btn-outline-primary" href="{% url 'mailing:blog-create' %}">Добавить пост</a>
+            </div>
 
         </div>
     </main>
+
 {% endblock %}

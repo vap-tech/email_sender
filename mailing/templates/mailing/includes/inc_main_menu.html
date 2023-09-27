@@ -10,7 +10,7 @@
     <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
             <a href="{% url 'mailing:mailing-all' %}" class="nav-link
-                {% if request.path == '/mailing/all/' %}active{% else %}text-white{% endif %}" >
+                {% if '/mailing/' in request.path %}active{% else %}text-white{% endif %}">
                 <svg class="bi pe-none me-2" width="16" height="16">
                     <use href="#home"></use>
                 </svg>
@@ -19,7 +19,7 @@
         </li>
         <li>
             <a href="{% url 'mailing:client-list' %}" class="nav-link
-              {% if request.path == '/client/all/' %}active{% else %}text-white{% endif %}">
+              {% if '/client/' in request.path %}active{% else %}text-white{% endif %}">
                 <svg class="bi pe-none me-2" width="16" height="16">
                     <use href="#table"></use>
                 </svg>
@@ -27,25 +27,32 @@
             </a>
         </li>
         <li>
-            <a href="{% url 'users:country-list' %}" class="nav-link
-                {% if request.path == '/users/country/list/' %}active{% else %}text-white{% endif %}">
-                <svg class="bi pe-none me-2" width="16" height="16">
-                    <use href="#speedometer2"></use>
-                </svg>
-                Страны
-            </a>
-        </li>
-
-        <li>
             <a href="{% url 'mailing:log-all' %}" class="nav-link
-                {% if request.path == '/log/all/' %}active{% else %}text-white{% endif %}">
+                {% if '/log/' in request.path %}active{% else %}text-white{% endif %}">
                 <svg class="bi pe-none me-2" width="16" height="16">
                     <use href="#collection"></use>
                 </svg>
                 Лог рассылок
             </a>
         </li>
-
+        <li>
+            <a href="{% url 'mailing:blog-list' %}" class="nav-link
+              {% if 'blog' in request.path %}active{% else %}text-white{% endif %}">
+                <svg class="bi pe-none me-2" width="16" height="16">
+                    <use href="#cpu-fill"></use>
+                </svg>
+                Блог
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'users:country-list' %}" class="nav-link
+                {% if 'country' in request.path %}active{% else %}text-white{% endif %}">
+                <svg class="bi pe-none me-2" width="16" height="16">
+                    <use href="#speedometer2"></use>
+                </svg>
+                Страны
+            </a>
+        </li>
         <li>
             <a href="{% url 'mailing:messages' %}" class="nav-link
                 {% if request.path == '/messages/' %}active{% else %}text-white{% endif %}">
@@ -72,7 +79,13 @@
             <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
             <strong>
                 {% if user.is_authenticated %}
-                    {{ user }}
+                    {% if user.first_name %}
+                        {{ user.first_name }}
+                    {% elif user.last_name %}
+                        {{ user.last_name }}
+                    {% else %}
+                        {{ user.email }}
+                    {% endif %}
                 {% else %}
                     Аутентификация
                 {% endif %}
