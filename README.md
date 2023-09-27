@@ -17,14 +17,11 @@
 
 ### Пример файла .env
 
-CACHE_ENABLE = True
-
-LOCATION = redis://127.0.0.1:6379
-
-DEBUG = True
-
-
-
+CACHE_ENABLE = True  
+LOCATION = redis://127.0.0.1:6379  
+  
+DEBUG = True  
+  
 EMAIL_HOST = mail.nic.ru
 
 EMAIL_PORT = 25
